@@ -11,7 +11,7 @@ import com.fasterxml.jackson.core.JsonGenerator;
  * @since 2.5
  */
 public class DefaultIndenter
-    extends DefaultPrettyPrinter.NopIndenter
+    extends NopIndenter
 {
     private static final long serialVersionUID = 1L;
 

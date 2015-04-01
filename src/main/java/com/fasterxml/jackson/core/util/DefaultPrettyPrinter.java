@@ -375,77 +375,8 @@ public class DefaultPrettyPrinter
     /**********************************************************
      */
 
-    /**
-     * Dummy implementation that adds no indentation whatsoever
-     */
-    public static class NopIndenter
-        implements Indenter, java.io.Serializable
-    {
-        public static final NopIndenter instance = new NopIndenter();
 
-        @Override
-        public void writeIndentation(JsonGenerator jg, int level) throws IOException { }
 
-        @Override
-        public boolean isInline() { return true; }
-    }
 
-    /**
-     * This is a very simple indenter that only adds a
-     * single space for indentation. It is used as the default
-     * indenter for array values.
-     */
-    public static class FixedSpaceIndenter extends NopIndenter
-    {
-        @SuppressWarnings("hiding")
-        public static final FixedSpaceIndenter instance = new FixedSpaceIndenter();
 
-        @Override
-        public void writeIndentation(JsonGenerator jg, int level) throws IOException
-        {
-            jg.writeRaw(' ');
-        }
-
-        @Override
-        public boolean isInline() { return true; }
-    }
-    
-    /**
-     * @deprecated Since 2.5 use {@link DefaultIndenter} instead
-     */
-    @Deprecated
-    public static class Lf2SpacesIndenter extends DefaultIndenter
-    {
-        /** @deprecated Use {@link DefaultIndenter#SYSTEM_LINEFEED_INSTANCE} instead.
-         */
-        @SuppressWarnings("hiding")
-        @Deprecated
-        public static final Lf2SpacesIndenter instance = new Lf2SpacesIndenter();
-
-        /** @deprecated Use {@code new DefaultIndenter("  ", DefaultIndenter.SYS_LF)} instead
-         */
-        @Deprecated
-        public Lf2SpacesIndenter() {
-            super("  ", DefaultIndenter.SYS_LF);
-        }
-        
-        /** @deprecated Use {@code new DefaultIndenter("  ", lf)} instead
-         */
-        @Deprecated
-        public Lf2SpacesIndenter(String lf) {
-            super("  ", lf);
-        }
-
-        /**
-         * Note: method was accidentally missing from 2.5.0; put back for 2.5.1 and
-         * later 2.5.x versions.
-         */
-        @Override
-        public Lf2SpacesIndenter withLinefeed(String lf) {
-            if (lf.equals(getEol())) {
-                return this;
-            }
-            return new Lf2SpacesIndenter(lf);
-        }
-    }
 }
