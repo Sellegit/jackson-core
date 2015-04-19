@@ -17,7 +17,6 @@ syntax: glob
 .settings
 
 # IDEA
-*.iml
 *.ipr
 *.iws
 /.idea/
