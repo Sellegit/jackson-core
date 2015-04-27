@@ -11,6 +11,7 @@ syntax: glob
 
 # building
 /target
+/build
 
 # Eclipse
 .classpath
